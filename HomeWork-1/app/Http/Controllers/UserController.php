@@ -27,9 +27,11 @@ class UserController extends Controller
             }
 
             $sql = 'select SQL_NO_CACHE * from users where name like "'.$name[0].'%"'.$fname;
-            
-            $users = DB::select($sql);
-            
+            //echo $sql;
+            //wrk -t10 -c50 -d30s --timeout 3s http://165.22.29.236/user/search?name=ab+b
+            //$users = DB::select($sql);
+            $users = DB::connection('slave')->select($sql);
+            //echo 1;
         }
         
         return view('user.search')->with('users', count($users));
