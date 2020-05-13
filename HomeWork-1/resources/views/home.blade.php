@@ -13,8 +13,9 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    You are logged in!
+                    <a href="{{ route('user_profile', Auth::user()->nickname) }}">My Profile</a>
+                    <br><br>
+                    <a href="{{ route('user_search') }}">Search User</a>
                 </div>
             </div>
         </div>
